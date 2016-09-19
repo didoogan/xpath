@@ -1,7 +1,7 @@
-row = []
+var  = "super var"
 
-def append_data(list):
-	list.append(1)
+def func():
+	print var
 
-append_data(row)
-print row	
+
+func()
