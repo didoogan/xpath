@@ -57,25 +57,14 @@ try:
 
     )
 except:
-    print 'errot'
-# import pdb; pdb.set_trace()    
-# with open('data.csv','a') as csvfile:
-#     fieldnames = ['index', 'head', 'url']
-#     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-#     for index, value  in enumerate(divs2):
-#         import pdb; pdb.set_trace()    
-#         a =  value.find_element_by_xpath("div/h3/a")
-#         url = value.find_element_by_xpath("div/div/div/div/cite")
-        # writer.writerow({'index': index, 'head': a.text.encode('utf-8'), 'url': url.text.encode('utf-8') })
-
+    print 'error. Can\'t grab divs2'
+# import pdb; pdb.set_trace() 
 with open('data.csv','a') as csvfile:
-    fieldnames = ['index', 'head', 'url']
-    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-    for i in range(1,10):
-        import pdb; pdb.set_trace()    
-        # a =  driver.find_element_by_xpath("//div[@class='g'][i]/div/h3/a")
-        # url = driver.find_element_by_xpath("//div[@class='g'][i]/div/div/div/div/cite")
-        writer.writerow({'index': i, 
-            'head': driver.find_element_by_xpath("//div[@class='g'][i]/div/h3/a").encode('utf-8'), 
-            'url': driver.find_element_by_xpath("//div[@class='g'][i]/div/div/div/div/cite").encode('utf-8') })
-# driver.quit()
+        fieldnames = ['index', 'head', 'url']
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        for index, value  in enumerate(divs2):
+            if index == 0:
+                continue
+            a =  value.find_element_by_xpath("div/h3/a")
+            url = value.find_element_by_xpath("div/div/div/div/cite")
+            writer.writerow({'index': index, 'head': a.text.encode('utf-8'), 'url': url.text.encode('utf-8') })
